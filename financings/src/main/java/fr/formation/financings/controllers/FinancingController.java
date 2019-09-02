@@ -2,6 +2,7 @@ package fr.formation.financings.controllers;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,11 +18,8 @@ import fr.formation.financings.services.FinancingService;
 @RequestMapping("/financings")
 public class FinancingController {
 
-    private final FinancingService service;
-
-    protected FinancingController(FinancingService service) {
-	this.service = service;
-    }
+    @Autowired // = @Inject
+    private FinancingService service;
 
     @PostMapping
     protected void create(@Valid @RequestBody Financing financing) {
