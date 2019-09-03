@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.formation.financings.dtos.FinancingDto;
 import fr.formation.financings.entities.Financing;
 import fr.formation.financings.services.FinancingService;
 
@@ -22,8 +23,8 @@ public class FinancingController {
     private FinancingService service;
 
     @PostMapping
-    protected void create(@Valid @RequestBody Financing financing) {
-	service.create(financing);
+    protected void create(@Valid @RequestBody FinancingDto dto) {
+	service.create(dto);
     }
 
     @DeleteMapping("/{id}")

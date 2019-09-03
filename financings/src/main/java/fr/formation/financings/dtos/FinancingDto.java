@@ -1,53 +1,45 @@
-package fr.formation.financings.entities;
+package fr.formation.financings.dtos;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 
-@Entity
-public class Financing {
+public class FinancingDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(length = 200, nullable = false)
+    @NotEmpty
+    @Size(max = 200)
     private String name;
 
-    @Column(length = 10, nullable = false)
+    @NotEmpty
+    @Size(max = 10)
     private String reference;
 
-    @Column(nullable = false)
+    @NotNull
+    @PastOrPresent
     private LocalDate startDate;
 
-    @Column(nullable = false)
+    @NotNull
+    @Future
     private LocalDate endDate;
 
-    @Column(nullable = false)
+    @NotNull
+    @Positive
     private Double amount;
 
-    @Column(nullable = false)
+    @NotNull
+    @Positive
     private Double rate;
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private Client client;
+    @NotNull
+    private Long clientId;
 
-    public Financing() {
-    }
-
-    public Long getId() {
-	return id;
-    }
-
-    public void setId(Long id) {
-	this.id = id;
+    public FinancingDto() {
+	//
     }
 
     public String getName() {
@@ -98,11 +90,11 @@ public class Financing {
 	this.rate = rate;
     }
 
-    public Client getClient() {
-	return client;
+    public Long getClientId() {
+	return clientId;
     }
 
-    public void setClient(Client client) {
-	this.client = client;
+    public void setClientId(Long clientId) {
+	this.clientId = clientId;
     }
 }
