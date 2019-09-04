@@ -1,7 +1,7 @@
 package fr.formation.financings.services;
 
 import fr.formation.financings.dtos.FinancingDto;
-import fr.formation.financings.entities.Financing;
+import fr.formation.financings.dtos.FinancingViewDto;
 
 public interface FinancingService {
 
@@ -9,7 +9,7 @@ public interface FinancingService {
 
     void delete(Long id);
 
-    Financing getOne(Long id);
+    FinancingViewDto getOne(Long id);
 
     void validate(Long id);
 

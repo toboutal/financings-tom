@@ -3,6 +3,7 @@ package fr.formation.financings.services;
 import org.springframework.stereotype.Service;
 
 import fr.formation.financings.dtos.FinancingDto;
+import fr.formation.financings.dtos.FinancingViewDto;
 import fr.formation.financings.entities.Client;
 import fr.formation.financings.entities.Financing;
 import fr.formation.financings.repositories.ClientRepository;
@@ -61,8 +62,8 @@ public class FinancingServiceImpl implements FinancingService {
     }
 
     @Override
-    public Financing getOne(Long id) {
-	return financingRepo.findById(id).get();
+    public FinancingViewDto getOne(Long id) {
+	return financingRepo.getById(id);
     }
 
     @Override
