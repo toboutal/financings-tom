@@ -13,7 +13,5 @@ public interface ClientService {
 
     Client getOne(Long id);
 
-    void update(Long id);
-
     void update(@Valid ClientDto dto, Long id);
 }

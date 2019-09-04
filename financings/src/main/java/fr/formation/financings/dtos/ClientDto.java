@@ -1,11 +1,16 @@
 package fr.formation.financings.dtos;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 import fr.formation.financings.entities.LegalForm;
 
 public class ClientDto {
 
     private LegalForm legalForm;
 
+    @NotEmpty
+    @Size(max = 255)
     private String name;
 
     private Long contactId;

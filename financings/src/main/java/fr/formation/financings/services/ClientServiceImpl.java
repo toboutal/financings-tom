@@ -1,11 +1,14 @@
 package fr.formation.financings.services;
 
+import org.springframework.stereotype.Service;
+
 import fr.formation.financings.dtos.ClientDto;
 import fr.formation.financings.entities.Client;
 import fr.formation.financings.entities.Contact;
 import fr.formation.financings.repositories.ClientRepository;
 import fr.formation.financings.repositories.ContactRepository;
 
+@Service
 public class ClientServiceImpl implements ClientService {
 
     private final ClientRepository clientRepo;
@@ -49,10 +52,5 @@ public class ClientServiceImpl implements ClientService {
 	Contact contact = contactRepo.getOne(dto.getContactId());
 	client.setContact(contact);
 	clientRepo.save(client);
-    }
-
-    @Override
-    public void update(Long id) {
-	// TODO Auto-generated method stub
     }
 }
