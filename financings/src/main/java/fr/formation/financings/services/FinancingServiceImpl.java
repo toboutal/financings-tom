@@ -31,6 +31,24 @@ public class FinancingServiceImpl implements FinancingService {
 	financing.setRate(dto.getRate());
 	financing.setStartDate(dto.getStartDate());
 	financing.setEndDate(dto.getEndDate());
+	financing.setValidated(dto.getValidated());
+	// Financing needs a Client object, not an id:
+	Client client = clientRepo.getOne(dto.getClientId());
+	financing.setClient(client);
+	financingRepo.save(financing);
+    }
+
+    @Override
+    public void update(FinancingDto dto, Long id) {
+	// Convert dto to entity:
+	Financing financing = financingRepo.findById(id).get();
+	financing.setName(dto.getName());
+	financing.setAmount(dto.getAmount());
+	financing.setReference(dto.getReference());
+	financing.setRate(dto.getRate());
+	financing.setStartDate(dto.getStartDate());
+	financing.setEndDate(dto.getEndDate());
+	financing.setValidated(dto.getValidated());
 	// Financing needs a Client object, not an id:
 	Client client = clientRepo.getOne(dto.getClientId());
 	financing.setClient(client);
@@ -45,5 +63,12 @@ public class FinancingServiceImpl implements FinancingService {
     @Override
     public Financing getOne(Long id) {
 	return financingRepo.findById(id).get();
+    }
+
+    @Override
+    public void validate(Long id) {
+	Financing target = financingRepo.findById(id).get();
+	target.setValidated(true);
+	financingRepo.save(target);
     }
 }
