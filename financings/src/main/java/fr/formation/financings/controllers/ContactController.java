@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +26,12 @@ public class ContactController {
     @PostMapping
     protected void create(@Valid @RequestBody ContactDto dto) {
 	service.create(dto);
+    }
+
+    @PutMapping("/{id}")
+    protected void update(@Valid @RequestBody ContactDto dto,
+	    @PathVariable("id") Long id) {
+	service.update(dto, id);
     }
 
     @DeleteMapping("/{id}")

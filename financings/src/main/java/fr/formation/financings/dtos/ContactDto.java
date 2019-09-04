@@ -4,8 +4,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import fr.formation.financings.entities.ContactInfo;
-
 public class ContactDto {
 
     @NotEmpty
@@ -16,12 +14,17 @@ public class ContactDto {
     @Size(max = 255)
     private String lastName;
 
-    @NotNull
-    private Long contactId;
+    @NotEmpty
+    @Size(max = 255)
+    private String email;
 
     @NotNull
     @Size(max = 20)
     private String phone;
+
+    @NotNull
+    @Size(max = 20)
+    private String mobile;
 
     public ContactDto() {
 	//
@@ -43,19 +46,27 @@ public class ContactDto {
 	this.lastName = lastName;
     }
 
-    public Long getContactId() {
-	return contactId;
+    public String getEmail() {
+	return email;
     }
 
-    public void setContactId(Long contactId) {
-	this.contactId = contactId;
+    public void setEmail(String email) {
+	this.email = email;
     }
 
-    public ContactInfo getInfo() {
-	return info;
+    public String getPhone() {
+	return phone;
     }
 
-    public void setInfo(ContactInfo info) {
-	this.info = info;
+    public void setPhone(String phone) {
+	this.phone = phone;
+    }
+
+    public String getMobile() {
+	return mobile;
+    }
+
+    public void setMobile(String mobile) {
+	this.mobile = mobile;
     }
 }

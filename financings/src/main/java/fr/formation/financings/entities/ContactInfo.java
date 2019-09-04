@@ -1,5 +1,6 @@
 package fr.formation.financings.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -9,14 +10,17 @@ public class ContactInfo {
 
     @NotBlank
     @Size(max = 255)
+    @Column(length = 255, nullable = false)
     private String email;
 
     @NotBlank
     @Size(max = 20)
+    @Column(length = 20, nullable = false)
     private String phone;
 
     @NotBlank
     @Size(max = 20)
+    @Column(length = 20, nullable = false)
     private String mobile;
 
     public ContactInfo() {
