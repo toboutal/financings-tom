@@ -39,6 +39,8 @@ public class Financing {
     @JoinColumn(nullable = false)
     private Client client;
 
+    private Boolean validated = false;
+
     public Financing() {
     }
 
@@ -104,5 +106,13 @@ public class Financing {
 
     public void setClient(Client client) {
 	this.client = client;
+    }
+
+    public Boolean getValidated() {
+	return validated;
+    }
+
+    public void setValidated(Boolean validated) {
+	this.validated = validated;
     }
 }
