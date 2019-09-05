@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.formation.financings.dtos.ClientDto;
-import fr.formation.financings.entities.Client;
+import fr.formation.financings.dtos.ClientViewDto;
 import fr.formation.financings.services.ClientService;
 
 @RestController
@@ -34,7 +34,7 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
-    protected Client getOne(Long id) {
+    protected ClientViewDto getOne(@PathVariable Long id) {
 	return service.getOne(id);
     }
 
@@ -42,5 +42,10 @@ public class ClientController {
     protected void update(@Valid @RequestBody ClientDto dto,
 	    @PathVariable("id") Long id) {
 	service.update(dto, id);
+    }
+
+    @GetMapping()
+    protected java.util.List<ClientViewDto> getAll() {
+	return service.getAll();
     }
 }

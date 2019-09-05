@@ -1,9 +1,11 @@
 package fr.formation.financings.services;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import fr.formation.financings.dtos.ClientDto;
-import fr.formation.financings.entities.Client;
+import fr.formation.financings.dtos.ClientViewDto;
 
 public interface ClientService {
 
@@ -11,7 +13,9 @@ public interface ClientService {
 
     void delete(Long id);
 
-    Client getOne(Long id);
+    ClientViewDto getOne(Long id);
 
     void update(@Valid ClientDto dto, Long id);
+
+    List<ClientViewDto> getAll();
 }
