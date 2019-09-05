@@ -1,5 +1,7 @@
 package fr.formation.financings.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,11 @@ public class FinancingController {
     @GetMapping("/{id}")
     protected FinancingViewDto getOne(@PathVariable("id") Long id) {
 	return service.getOne(id);
+    }
+
+    @GetMapping
+    protected List<FinancingViewDto> getAll() {
+	return service.getAll();
     }
 
     @PatchMapping("/{id}/validate")

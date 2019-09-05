@@ -2,13 +2,15 @@ package fr.formation.financings.dtos;
 
 public interface FinancingViewDto {
 
-    String getClientName();
+    Long getId();
 
     String getReference();
 
     Double getAmount();
 
     Double getRate();
+
+    String getClientName();
 
     String getClientContactFirstName();
 
