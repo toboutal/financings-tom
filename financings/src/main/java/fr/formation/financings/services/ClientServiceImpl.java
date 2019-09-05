@@ -1,8 +1,11 @@
 package fr.formation.financings.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import fr.formation.financings.dtos.ClientDto;
+import fr.formation.financings.dtos.ClientViewDto;
 import fr.formation.financings.entities.Client;
 import fr.formation.financings.entities.Contact;
 import fr.formation.financings.repositories.ClientRepository;
@@ -41,9 +44,9 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client getOne(Long id) {
+    public ClientViewDto getOne(Long id) {
 	// TODO Auto-generated method stub
-	return clientRepo.findById(id).get();
+	return clientRepo.getById(id);
     }
 
     @Override
@@ -54,5 +57,11 @@ public class ClientServiceImpl implements ClientService {
 	Contact contact = contactRepo.getOne(dto.getContactId());
 	client.setContact(contact);
 	clientRepo.save(client);
+    }
+
+    @Override
+    public List<ClientViewDto> getAll() {
+	// TODO Auto-generated method stub
+	return clientRepo.getAllProjectedBy();
     }
 }
