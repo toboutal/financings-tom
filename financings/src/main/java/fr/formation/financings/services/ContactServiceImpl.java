@@ -1,8 +1,11 @@
 package fr.formation.financings.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import fr.formation.financings.dtos.ContactDto;
+import fr.formation.financings.dtos.ContactViewDto;
 import fr.formation.financings.entities.Contact;
 import fr.formation.financings.entities.ContactInfo;
 import fr.formation.financings.repositories.ContactRepository;
@@ -50,8 +53,14 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Contact getOne(Long id) {
+    public ContactViewDto getOne(Long id) {
 	// TODO Auto-generated method stub
-	return contactRepo.findById(id).get();
+	return contactRepo.getById(id);
+    }
+
+    @Override
+    public List<ContactViewDto> getAll() {
+	// TODO Auto-generated method stub
+	return contactRepo.getAllProjectedBy();
     }
 }
