@@ -54,8 +54,13 @@ public class ClientServiceImpl implements ClientService {
 	Client client = clientRepo.findById(id).get();
 	client.setLegalForm(dto.getLegalForm());
 	client.setName(dto.getName());
-	Contact contact = contactRepo.getOne(dto.getContactId());
-	client.setContact(contact);
+	// Possibilité contact à null -> permet d'enlever le else
+	if (dto.getContactId() != null) {
+	    Contact contact = contactRepo.getOne(dto.getContactId());
+	    client.setContact(contact);
+	} else {
+	    client.setContact(null);
+	}
 	clientRepo.save(client);
     }
 
