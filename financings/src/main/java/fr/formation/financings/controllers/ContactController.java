@@ -1,5 +1,7 @@
 package fr.formation.financings.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.formation.financings.dtos.ContactDto;
-import fr.formation.financings.entities.Contact;
+import fr.formation.financings.dtos.ContactViewDto;
 import fr.formation.financings.services.ContactService;
 
 @RestController
@@ -40,7 +42,12 @@ public class ContactController {
     }
 
     @GetMapping("/{id}")
-    protected Contact getOne(@PathVariable("id") Long id) {
+    protected ContactViewDto getOne(@PathVariable("id") Long id) {
 	return service.getOne(id);
+    }
+
+    @GetMapping
+    protected List<ContactViewDto> getAll() {
+	return service.getAll();
     }
 }
