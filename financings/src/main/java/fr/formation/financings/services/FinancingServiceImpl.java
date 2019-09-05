@@ -1,5 +1,7 @@
 package fr.formation.financings.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import fr.formation.financings.dtos.FinancingDto;
@@ -64,6 +66,11 @@ public class FinancingServiceImpl implements FinancingService {
     @Override
     public FinancingViewDto getOne(Long id) {
 	return financingRepo.getById(id);
+    }
+
+    @Override
+    public List<FinancingViewDto> getAll() {
+	return financingRepo.getAllProjectedBy();
     }
 
     @Override
