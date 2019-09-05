@@ -23,6 +23,10 @@ public class ContactServiceImpl implements ContactService {
     public void create(ContactDto dto) {
 	// TODO Auto-generated method stub
 	Contact contact = new Contact();
+	populateAndSave(dto, contact);
+    }
+
+    private void populateAndSave(ContactDto dto, Contact contact) {
 	contact.setFirstName(dto.getFirstName());
 	contact.setLastName(dto.getLastName());
 	ContactInfo contactInfo = new ContactInfo();
@@ -36,14 +40,7 @@ public class ContactServiceImpl implements ContactService {
     @Override
     public void update(ContactDto dto, Long id) {
 	Contact contact = contactRepo.findById(id).get();
-	contact.setFirstName(dto.getFirstName());
-	contact.setLastName(dto.getLastName());
-	ContactInfo contactInfo = new ContactInfo();
-	contactInfo.setEmail(dto.getEmail());
-	contactInfo.setMobile(dto.getMobile());
-	contactInfo.setPhone(dto.getPhone());
-	contact.setInfo(contactInfo);
-	contactRepo.save(contact);
+	populateAndSave(dto, contact);
     }
 
     @Override
